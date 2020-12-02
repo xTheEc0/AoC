@@ -1,5 +1,4 @@
 const fs = require('fs');
-const path = require('path');
 const assert = require('assert');
 
 const file = fs.readFileSync('./input.txt', 'utf8').split('\n').map(Number);
@@ -35,6 +34,4 @@ const sum3 = () => {
 console.log(`${pairA} + ${pairB} = ${search}; = ${pairA * pairB}`);
 
 [pairA, pairB, pairC] = sum3();
-console.log(
-  `${pairA} + ${pairB} + ${pairC} = ${search}; = ${pairA * pairB * pairC}`
-);
+console.log(`${pairA} + ${pairB} + ${pairC} = ${search}; = ${pairA * pairB * pairC}`);
