@@ -27,8 +27,8 @@ const fuelForFuel = (mass) => {
   return total;
 };
 
-assert(fuelForFuel(14) == 2);
-assert(fuelForFuel(1969) == 966);
-assert(fuelForFuel(100756) == 50346);
+assert.strictEqual(fuelForFuel(14), 2);
+assert.strictEqual(fuelForFuel(1969), 966);
+assert.strictEqual(fuelForFuel(100756), 50346);
 
 console.log(`1-2 answer: ${file.reduce((total, mass) => total + fuelForFuel(mass), 0)}`);

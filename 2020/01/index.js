@@ -1,37 +1,47 @@
 const fs = require('fs');
 const assert = require('assert');
 
-const file = fs.readFileSync('./input.txt', 'utf8').split('\n').map(Number);
+const file = fs.readFileSync('./input.txt', 'utf8').split('\r\n').map(Number);
 
-let pairA, pairB, pairC;
-const search = 2020;
-
-const sum2 = () => {
-  for (i = 0; i < file.length - 1; i++) {
-    for (j = 1; j < file.length; j++) {
+const Part1 = (data) => {
+  for (i = 0; i < data.length - 1; i++) {
+    for (j = 1; j < data.length; j++) {
       if (i === j) continue;
-      if (file[i] + file[j] == search) {
-        return [file[i], file[j]];
+      if (data[i] + data[j] == 2020) {
+        return data[i] * data[j];
       }
     }
   }
 };
 
-const sum3 = () => {
-  for (i = 0; i < file.length - 2; i++) {
-    for (j = 1; j < file.length - 1; j++) {
-      for (n = 2; n < file.length; n++) {
+const Part2 = (data) => {
+  for (i = 0; i < data.length - 2; i++) {
+    for (j = 1; j < data.length - 1; j++) {
+      for (n = 2; n < data.length; n++) {
         if (new Set([i, j, n]).size !== 3) continue;
-        if (file[i] + file[j] + file[n] == search) {
-          return [file[i], file[j], file[n]];
+        if (data[i] + data[j] + data[n] == 2020) {
+          return data[i] * data[j] * data[n];
         }
       }
     }
   }
 };
 
-[pairA, pairB] = sum2();
-console.log(`${pairA} + ${pairB} = ${search}; = ${pairA * pairB}`);
+console.log(`Part 1: ${Part1(file)}`); // 974304
+console.log(`Part 2: ${Part2(file)}`); // 236430480
 
-[pairA, pairB, pairC] = sum3();
-console.log(`${pairA} + ${pairB} + ${pairC} = ${search}; = ${pairA * pairB * pairC}`);
+// Test data
+const testData = `1721
+979
+366
+299
+675
+1456`
+  .split('\n')
+  .map(Number);
+
+// Part 1 tests
+assert.strictEqual(Part1(testData), 514579);
+
+// Part 2 tests
+assert.strictEqual(Part2(testData), 241861950);

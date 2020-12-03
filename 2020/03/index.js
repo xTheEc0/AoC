@@ -32,7 +32,7 @@ let mult =
   traverse(datagrid, 1, 2);
 console.log(`Part 2: ${mult}`); // 4723283400
 
-// Part 1 tests
+// Test data
 testData = `
 ..##.......
 #...#...#..
@@ -49,6 +49,7 @@ testData = `
   .split('\n')
   .map((x) => Array.from(x));
 
+// Part 1 tests
 assert.strictEqual(traverse(testData, 3, 1), 7);
 
 // Part 2 tests

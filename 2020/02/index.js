@@ -17,6 +17,7 @@ const countOccurances = (string, letter) => {
   return (string.match(regex) || []).length;
 };
 
+/*
 const countOnlyOnce = (password, policy) => {
   if (password[policy.min - 1] == policy.letter || password[policy.max - 1] == policy.letter) {
     if (password[policy.min - 1] == policy.letter && password[policy.max - 1] == policy.letter) {
@@ -26,6 +27,12 @@ const countOnlyOnce = (password, policy) => {
     }
   }
   return false;
+};
+*/
+
+// Big Brain XOR
+const countOnlyOnce = (password, policy) => {
+  if (!(password[policy.min - 1] == policy.letter) != !(password[policy.max - 1] == policy.letter)) return true;
 };
 
 const Part1 = () => {
@@ -45,8 +52,8 @@ const Part2 = () => {
   return counter;
 };
 
-console.log(`Valid Passwords: ${Part1()}`); // 519
-console.log(`Valid Passwords: ${Part2()}`); // 708
+console.log(`Part 1: ${Part1()}`); // 519
+console.log(`Part 2: ${Part2()}`); // 708
 
 // Part 1 tests
 assert.strictEqual(countOccurances('abcabc', 'a'), 2);
