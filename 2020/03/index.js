@@ -10,10 +10,8 @@ const traverse = (data, moveX, moveY) => {
   let treeCount = 0;
 
   // iX = indexX, iY = indexY.
-  iX = 0;
-  iY = 0;
-
-  let loop = 0;
+  let iX = 0;
+  let iY = 0;
 
   while (iY < mapHeight) {
     iX += moveX;
