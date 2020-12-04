@@ -49,7 +49,7 @@ console.log(`Part 2: ${Part2(file)}`); // 140
 testData = fs.readFileSync('./testInput.txt', 'utf8');
 
 // Part 1 tests
-assert.strictEqual(Part1(testData), 2);
+assert.strictEqual(Part1(testData), 10);
 
 // Part 2 tests
-assert.strictEqual(Part2(testData), 2);
+assert.strictEqual(Part2(testData), 6);
