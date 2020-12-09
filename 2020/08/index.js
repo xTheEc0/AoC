@@ -77,6 +77,7 @@ const Part2 = (input) => {
           p++;
           break;
       }
+      if (p < 0) break;
 
       if (p >= patched.length) {
         return acc;
