@@ -31,17 +31,9 @@ const Part2 = (input) => {
     )
     .pop();
 };
-console.log(`Starting 'Part 1' Timer`);
-console.time('Part 1');
+
 console.log(`Part 1: ${Part1(file)}`); // 1984
-console.timeEnd('Part 1');
-
-console.log();
-
-console.log(`Starting 'Part 2' Timer`);
-console.time('Part 2');
 console.log(`Part 2: ${Part2(file)}`); // 3543369523456
-console.timeEnd('Part 2');
 
 // Test data
 const testData1 = fs
