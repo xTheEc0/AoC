@@ -7,8 +7,7 @@ const Part1 = (input) => {
   const rules = input.reduce((rules, line) => {
     const [, color, otherColors] = /(\w+ \w+) bags contain (.*)\./.exec(line);
 
-    const compatibleWith =
-      otherColors !== 'no other bags' ? otherColors.split(', ').map((other) => /(\w+ \w+) bags?/.exec(other)[1]) : [];
+    const compatibleWith = otherColors !== 'no other bags' ? otherColors.split(', ').map((other) => /(\w+ \w+) bags?/.exec(other)[1]) : [];
 
     rules[color] = new Set();
 

@@ -24,6 +24,7 @@ const traverse = (data, moveX, moveY) => {
 
 console.log(`Part 1: ${traverse(datagrid, 3, 1)}`); // 187
 
+// prettier-ignore
 let mult =
   traverse(datagrid, 1, 1) *
   traverse(datagrid, 3, 1) *

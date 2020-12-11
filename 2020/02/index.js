@@ -17,19 +17,6 @@ const countOccurances = (string, letter) => {
   return (string.match(regex) || []).length;
 };
 
-/*
-const countOnlyOnce = (password, policy) => {
-  if (password[policy.min - 1] == policy.letter || password[policy.max - 1] == policy.letter) {
-    if (password[policy.min - 1] == policy.letter && password[policy.max - 1] == policy.letter) {
-      return false;
-    } else {
-      return true;
-    }
-  }
-  return false;
-};
-*/
-
 // Big Brain XOR
 const countOnlyOnce = (password, policy) => {
   if (!(password[policy.min - 1] == policy.letter) != !(password[policy.max - 1] == policy.letter)) return true;
