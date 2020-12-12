@@ -79,9 +79,19 @@ console.log(`Part 1: ${Part1(file)}`); // 2251
 console.log(`Part 2: ${Part2(file)}`); // 2019
 
 // Test data
-const testData = fs
-  .readFileSync('./testInput.txt', 'utf8')
-  .split('\r\n')
+const testData = `
+L.LL.LL.LL
+LLLLLLL.LL
+L.L.L..L..
+LLLL.LL.LL
+L.LL.LL.LL
+L.LLLLL.LL
+..L.L.....
+LLLLLLLLLL
+L.LLLLLL.L
+L.LLLLL.LL`
+  .trim()
+  .split('\n')
   .map((line) => line.split(''));
 
 // Part 1 tests

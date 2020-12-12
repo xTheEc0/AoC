@@ -47,7 +47,29 @@ console.log(`Part 1: ${Part1(file)}`); // 400480901
 console.log(`Part 2: ${Part2(file)}`); // 67587168
 
 // Test data
-const testData = fs.readFileSync('./testInput.txt', 'utf8').split('\r\n').map(Number);
+const testData = `35
+20
+15
+25
+47
+40
+62
+55
+65
+95
+102
+117
+150
+182
+127
+219
+299
+277
+309
+576`
+  .trim()
+  .split('\n')
+  .map(Number);
 
 // Part 1 tests
 assert.strictEqual(Part1(testData, 5), 127);
