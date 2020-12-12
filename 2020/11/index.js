@@ -4,7 +4,7 @@ const assert = require('assert');
 const file = fs
   .readFileSync('./input.txt', 'utf8')
   .split('\r\n')
-  .map((line) => line.trim().split(''));
+  .map((line) => line.split(''));
 
 // prettier-ignore
 const adjacencyMatrix = [
@@ -82,7 +82,7 @@ console.log(`Part 2: ${Part2(file)}`); // 2019
 const testData = fs
   .readFileSync('./testInput.txt', 'utf8')
   .split('\r\n')
-  .map((line) => line.trim().split(''));
+  .map((line) => line.split(''));
 
 // Part 1 tests
 assert.strictEqual(Part1(testData), 37);
