@@ -42,5 +42,5 @@ assert.strictEqual(Part1(['2x3x4']), 58);
 assert.strictEqual(Part1(['1x1x10']), 43);
 
 // Part 2 tests
-//assert.strictEqual(Part2('2x3x4'), 34);
-//assert.strictEqual(Part2('1x1x10'), 14);
+assert.strictEqual(Part2(['2x3x4']), 34);
+assert.strictEqual(Part2(['1x1x10']), 14);
