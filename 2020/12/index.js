@@ -70,7 +70,8 @@ console.log(`Part 1: ${Part1(file)}`); // 2847
 console.log(`Part 2: ${Part2(file)}`); // 29839
 
 // Test data
-const testData = `F10
+const testData = `
+F10
 N3
 F7
 R90
