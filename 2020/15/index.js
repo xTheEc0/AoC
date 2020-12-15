@@ -34,19 +34,19 @@ console.time('Part 2');
 console.log(`Part 2: ${Part2(file)}`); // 11721679
 console.timeEnd('Part 2'); // ~4s
 
-// Part 1 tests
-assert.strictEqual(Part1('0, 3, 6'), 436);
-assert.strictEqual(Part1('1, 3, 2'), 1);
-assert.strictEqual(Part1('2, 1, 3'), 10);
-assert.strictEqual(Part1('1, 2, 3'), 27);
-assert.strictEqual(Part1('2, 3, 1'), 78);
-assert.strictEqual(Part1('3, 2, 1'), 438);
-assert.strictEqual(Part1('3, 1, 2'), 1836);
-// Part 2 tests
-assert.strictEqual(Part2('0, 3, 6'), 175594);
-assert.strictEqual(Part2('1, 3, 2'), 2578);
-assert.strictEqual(Part2('2, 1, 3'), 3544142);
-assert.strictEqual(Part2('1, 2, 3'), 261214);
-assert.strictEqual(Part2('2, 3, 1'), 6895259);
-assert.strictEqual(Part2('3, 2, 1'), 18);
-assert.strictEqual(Part2('3, 1, 2'), 362);
+// // Part 1 tests
+// assert.strictEqual(Part1('0, 3, 6'), 436);
+// assert.strictEqual(Part1('1, 3, 2'), 1);
+// assert.strictEqual(Part1('2, 1, 3'), 10);
+// assert.strictEqual(Part1('1, 2, 3'), 27);
+// assert.strictEqual(Part1('2, 3, 1'), 78);
+// assert.strictEqual(Part1('3, 2, 1'), 438);
+// assert.strictEqual(Part1('3, 1, 2'), 1836);
+// // Part 2 tests
+// assert.strictEqual(Part2('0, 3, 6'), 175594);
+// assert.strictEqual(Part2('1, 3, 2'), 2578);
+// assert.strictEqual(Part2('2, 1, 3'), 3544142);
+// assert.strictEqual(Part2('1, 2, 3'), 261214);
+// assert.strictEqual(Part2('2, 3, 1'), 6895259);
+// assert.strictEqual(Part2('3, 2, 1'), 18);
+// assert.strictEqual(Part2('3, 1, 2'), 362);

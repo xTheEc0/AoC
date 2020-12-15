@@ -62,8 +62,8 @@ const Part2 = (input) => {
   return [...memory.values()].reduce((a, b) => a + b, 0);
 };
 
-//console.log(`Part 1: ${Part1(file)}`); // 3464
-//console.log(`Part 2: ${Part2(file)}`); // 760171380521445.
+//console.log(`Part 1: ${Part1(file)}`); // 2346881602152
+//console.log(`Part 2: ${Part2(file)}`); // 3885232834169
 
 // Test data
 const testData1 = `
