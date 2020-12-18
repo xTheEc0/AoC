@@ -67,7 +67,7 @@ console.log();
 
 console.time('Part 2');
 console.log(`Part 2: ${Part2(file)}`); // 2084
-console.timeEnd('Part 2'); // ~4s
+console.timeEnd('Part 2'); // ~2s
 
 // Part 1 tests
 assert.strictEqual(Part1(['.#.', '..#', '###'].join('\r\n')), 112);
