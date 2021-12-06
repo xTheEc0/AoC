@@ -1,7 +1,7 @@
 import fs from 'fs';
 import assert from 'assert';
 
-const data = fs.readFileSync('./input.txt', 'utf8');
+const file = fs.readFileSync('./input.txt', 'utf8');
 
 const mark = (board, number) => {
     board.forEach(row =>
@@ -52,8 +52,8 @@ const Part2 = (input) => {
     return Part1(input, false);
 }
 
-console.log(`Part 1: ${Part1(data)}`); // 10680
-console.log(`Part 2: ${Part2(data)}`); // 31892
+console.log(`Part 1: ${Part1(file)}`); // 10680
+console.log(`Part 2: ${Part2(file)}`); // 31892
 
 // Test data
 const testData = `7,4,9,5,11,17,23,2,0,14,21,24,10,16,13,6,15,25,12,22,18,20,8,19,3,26,1

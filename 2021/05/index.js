@@ -1,7 +1,7 @@
 import fs from 'fs';
 import assert from 'assert';
 
-const data = fs.readFileSync('./input.txt', 'utf8');
+const file = fs.readFileSync('./input.txt', 'utf8');
 
 const mark = (points, x, y) => {
     points[`${x},${y}`] = (points[`${x},${y}`] || 0) + 1;
@@ -38,8 +38,8 @@ const Part2 = (input) => {
     return Part1(input, true);
 }
 
-console.log(`Part 1: ${Part1(data)}`); // 5197
-console.log(`Part 2: ${Part2(data)}`); // 18605
+console.log(`Part 1: ${Part1(file)}`); // 5197
+console.log(`Part 2: ${Part2(file)}`); // 18605
 
 // Test data
 const testData = `0,9 -> 5,9
