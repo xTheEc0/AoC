@@ -1,93 +1,59 @@
 import fs from 'fs';
 import assert from 'assert';
 
-const file = fs.readFileSync('./input.txt', 'utf8')
+const data = fs.readFileSync('./input.txt', 'utf8');
 
-let [inputStr, ...boardsStr] = file.split('\n\n');
-let input = inputStr.split(',');
-let boards = boardsStr.map(b => b.split('\n').map(l => l.trim().split(/\s+/).map(Number)));
-
-const isWin = board => {
-    for (let i = 0; i < 5; i++) {
-        if (board[i].filter(v => v == 'x').length == board[i].length) {
-            return true;
-        }
-        let win = true;
-        for (let j = 0; j < 5; j++) {
-            if (board[j][i] != 'x') {
-                win = false;
-            }
-        }
-        if (win) {
-            return true;
-        }
-    }
-    return false;
+const mark = (board, number) => {
+    board.forEach(row =>
+        row.forEach(slot => slot.number === number && (slot.marked = true)),
+    );
 }
 
-const markBoard = (board, val) => {
-    for (let i = 0; i < board.length; i++) {
-        for (let j = 0; j < board[i].length; j++) {
-            if (board[i][j] == val) {
-                board[i][j] = 'x';
-            }
-        }
-    }
+const winner = (board) => {
+    const winnerRow = board.some(row => row.every(slot => slot.marked));
+    const winnerCol = board[0].some((s, i) => board.every(row => row[i].marked));
+    return winnerRow || winnerCol;
 }
 
-const sumBoard = board => board.reduce((c, l) => l.reduce((c, v) => v == 'x' ? c : c + v, 0) + c, 0);
-
-const run = () => {
-    for (let i = 0; i < input.length; i++) {
-        let val = input[i];
-        for (let j = 0; j < boards.length; j++) {
-            let board = boards[j];
-
-            markBoard(board, val);
-
-            if (isWin(board)) {
-                return [board, val];
-            }
-        }
-    }
+const calc = (board) => {
+    let sum = 0;
+    board.forEach(row =>
+        row.forEach(slot => !slot.marked && (sum += slot.number)),
+    );
+    return sum;
 }
 
-const run2 = () => {
-    let totalWin = 0;
-    let won = [];
-    for (let i = 0; i < input.length; i++) {
-        let val = input[i];
-        for (let j = 0; j < boards.length; j++) {
-            let board = boards[j];
-
-            markBoard(board, val);
-
-            if (isWin(board) && !won[j]) {
-                totalWin++;
-                won[j] = true;
-
-                if (totalWin == boards.length) {
-                    return [board, val];
+const Part1 = (input, win = true) => {
+    let [numbers, ...boards] = input.split('\n\n');
+    numbers = numbers.split(',').map(n => +n);
+    boards = boards.map(board =>
+        board.split('\n').map(row =>
+            row
+                .trim()
+                .split(/\s+/)
+                .map(n => ({ marked: false, number: +n })),
+        ),
+    );
+    for (const number of numbers) {
+        for (const board of boards) {
+            mark(board, number);
+            if (winner(board)) {
+                if (win || boards.length === 1) {
+                    return number * calc(board);
+                } else {
+                    boards = boards.filter(b => b !== board);
                 }
             }
         }
     }
 }
 
-const Part1 = () => {
+const Part2 = (input) => {
+    return Part1(input, false);
+}
 
-    let [winBoard, winVal] = run();
-    return sumBoard(winBoard) * winVal;
-};
-
-const Part2 = () => {
-
-    let [lastBoard, lastVal] = run2();
-    return sumBoard(lastBoard) * lastVal;
-};
-
-console.log(`Part 1: ${Part1()}`); // 10680
-console.log(`Part 2: ${Part2()}`); // 31892
+console.log(`Part 1: ${Part1(data)}`); // 10680
+console.log(`Part 2: ${Part2(data)}`); // 31892
 
 // Test data
 const testData = `7,4,9,5,11,17,23,2,0,14,21,24,10,16,13,6,15,25,12,22,18,20,8,19,3,26,1
@@ -112,7 +78,7 @@ const testData = `7,4,9,5,11,17,23,2,0,14,21,24,10,16,13,6,15,25,12,22,18,20,8,1
 
 console.log(`\n\n ~ TESTS ~ `);
 // Part 1 tests
-//assert.strictEqual(Part1(testData), 4512);
+assert.strictEqual(Part1(testData), 4512);
 
 // Part 2 tests
-//assert.strictEqual(Part2(testData), 1924);
+assert.strictEqual(Part2(testData), 1924);
