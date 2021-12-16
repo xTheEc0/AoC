@@ -3,7 +3,7 @@ import assert from 'assert';
 
 const file = fs.readFileSync('./input.txt', 'utf8');
 
-const getMap = (digits) => {
+function getMap(digits) {
     digits = digits.map(d => d.split('').sort().join(''));
     const one = digits.find(d => d.length === 2);
     const seven = digits.find(d => d.length === 3);
@@ -50,7 +50,7 @@ const getMap = (digits) => {
     return map;
 }
 
-const calcNum = (output, map) => {
+function calcNum(output, map) {
     return +output
         .map(d => {
             return map[d.split('').sort().join('')];
@@ -58,12 +58,12 @@ const calcNum = (output, map) => {
         .join('');
 }
 
-const guess = (line) => {
+function guess(line) {
     const map = getMap(line[0].concat(line[1]));
     return calcNum(line[1], map);
 }
 
-const Part1 = (input) => {
+function Part1(input) {
     const lines = input.split('\n').map(x => x.split(' | ')[1].split(' '));
     return lines
         .map(x => x.filter(x => x.length !== 5 && x.length !== 6))
@@ -71,7 +71,7 @@ const Part1 = (input) => {
         .reduce((a, b) => a + b, 0);
 }
 
-const Part2 = (input) => {
+function Part2(input) {
     const lines = input.split('\n').map(x => x.split(' | ').map(x => x.split(' ')));
     return lines.reduce((prev, line) => guess(line) + prev, 0);
 }

@@ -3,14 +3,14 @@ import assert from 'assert';
 
 const file = fs.readFileSync('./input.txt', 'utf8').split('\r\n');
 
-const parse = (input) => {
+function parse(input) {
   return input.map((x) => {
     const measurements = x.trim().split('x');
     return { length: measurements[0], width: measurements[1], height: measurements[2] };
   });
 };
 
-const Part1 = (input) => {
+function Part1(input) {
   return parse(input).reduce((acc, cur) => {
     const { length, width, height } = cur;
     const frontBack = width * height;
@@ -22,7 +22,7 @@ const Part1 = (input) => {
   }, 0);
 };
 
-const Part2 = (input) => {
+function Part2(input) {
   return parse(input).reduce((acc, cur) => {
     const { length, width, height } = cur;
     const frontBack = 2 * width + 2 * height;

@@ -4,7 +4,7 @@ import assert from 'assert';
 const file = fs.readFileSync('./input.txt', 'utf8').split('\r\n');
 const datagrid = file.map((x) => Array.from(x));
 
-const traverse = (data, moveX, moveY) => {
+function traverse(data, moveX, moveY) {
   const mapHeight = data.length - 1;
   const maxX = data[0].length - 1;
   let treeCount = 0;

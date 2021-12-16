@@ -3,7 +3,7 @@ import assert from 'assert';
 
 const file = fs.readFileSync('./input.txt', 'utf8').split('\r\n');
 
-const Part1 = (input) => {
+function Part1(input) {
   const rotate = (origin, degrees) => (origin + degrees + 360) % 360;
 
   const ship = input.reduce(
@@ -30,7 +30,7 @@ const Part1 = (input) => {
   return Math.abs(ship.x) + Math.abs(ship.y);
 };
 
-const Part2 = (input) => {
+function Part2(input) {
   const rotate = ([dx, dy], degrees) => {
     const rotations = {
       0: [dx, dy],

@@ -3,7 +3,7 @@ import assert from 'assert';
 
 const file = fs.readFileSync('./input.txt', 'utf8')
 
-const Part1 = (input, days = 80) => {
+function Part1(input, days = 80) {
     const fish = input.split(',').map(x => +x);
     let map = {};
     for (let i = 0; i < fish.length; i++) {
@@ -24,7 +24,7 @@ const Part1 = (input, days = 80) => {
     return Object.values(map).reduce((a, b) => a + b, 0);
 }
 
-const Part2 = (input) => {
+function Part2(input) {
     return Part1(input, 256);
 }
 

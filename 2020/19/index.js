@@ -3,7 +3,7 @@ import assert from 'assert';
 
 const file = fs.readFileSync('./input.txt', 'utf8');
 
-const parse = (rules) => {
+function parse(rules) {
   const map = new Map();
   rules.forEach((x) => {
     const [id, str] = x.split(': ');
@@ -17,13 +17,13 @@ const parse = (rules) => {
   return new RegExp(`^${pattern}$`);
 };
 
-const Part1 = (input) => {
+function Part1(input) {
   const [rules, messages] = input.split('\r\n\r\n').map((x) => x.split('\r\n'));
   const pattern = parse(rules);
   return messages.filter((message) => message.match(pattern)).length;
 };
 
-const Part2 = (input) => {
+function Part2(input) {
   const rule = new Array(10).fill().map((x, i) => `42{${i + 1}} 31{${i + 1}}`);
   input = input.replace(/^8: 42$/m, '8: 42+').replace(/^11: 42 31$/m, `11: ${rule.join('|')}`);
   return Part1(input);

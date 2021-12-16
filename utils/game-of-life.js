@@ -1,4 +1,4 @@
-export const generation = (map, neighbors, alive) => {
+export function generation(map, neighbors, alive) {
   let next = new Map();
   let missing = [];
   let count = 0;
@@ -21,7 +21,7 @@ export const generation = (map, neighbors, alive) => {
   return { next, count };
 };
 
-export const gol = (map, neighbors, alive, iterations) => {
+export function gol(map, neighbors, alive, iterations) {
   let result;
   for (let i = 0; i < iterations; i++) {
     result = generation(map, neighbors, alive);

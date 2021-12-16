@@ -3,19 +3,19 @@ import assert from 'assert';
 
 const file = fs.readFileSync('./input.txt', 'utf8');
 
-const mark = (board, number) => {
+function mark(board, number) {
     board.forEach(row =>
         row.forEach(slot => slot.number === number && (slot.marked = true)),
     );
 }
 
-const winner = (board) => {
+function winner(board) {
     const winnerRow = board.some(row => row.every(slot => slot.marked));
     const winnerCol = board[0].some((s, i) => board.every(row => row[i].marked));
     return winnerRow || winnerCol;
 }
 
-const calc = (board) => {
+function calc(board) {
     let sum = 0;
     board.forEach(row =>
         row.forEach(slot => !slot.marked && (sum += slot.number)),
@@ -23,7 +23,7 @@ const calc = (board) => {
     return sum;
 }
 
-const Part1 = (input, win = true) => {
+function Part1(input, win = true) {
     let [numbers, ...boards] = input.split('\n\n');
     numbers = numbers.split(',').map(n => +n);
     boards = boards.map(board =>
@@ -48,7 +48,7 @@ const Part1 = (input, win = true) => {
     }
 }
 
-const Part2 = (input) => {
+function Part2(input) {
     return Part1(input, false);
 }
 

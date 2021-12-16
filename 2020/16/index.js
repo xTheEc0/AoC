@@ -3,7 +3,7 @@ import assert from 'assert';
 
 const file = fs.readFileSync('./input.txt', 'utf8');
 
-const Part1 = (input) => {
+function Part1(input) {
   const blocks = input.split(/[\r\n]{3,}/g);
 
   const fields = blocks[0].split('\r\n').map((field) => {
@@ -26,7 +26,7 @@ const Part1 = (input) => {
   }, 0);
 };
 
-const Part2 = (input) => {
+function Part2(input) {
   const blocks = input.split(/[\r\n]{3,}/g);
 
   let fields = blocks[0].split('\r\n').map((field) => {

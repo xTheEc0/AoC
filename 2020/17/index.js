@@ -5,7 +5,7 @@ import { gol } from '../../utils/game-of-life.js';
 const file = fs.readFileSync('./input.txt', 'utf8');
 
 const cache = [];
-const offsets = (dimensions) => {
+function offsets(dimensions) {
   if (dimensions === 0) {
     return [[]];
   } else if (!cache[dimensions]) {
@@ -15,14 +15,14 @@ const offsets = (dimensions) => {
   return cache[dimensions];
 };
 
-const neighbors = (key) => {
+function neighbors(key) {
   const coordinates = key.split(',').map((x) => +x);
   return offsets(coordinates.length)
     .map((x) => x.map((c, i) => coordinates[i] + c).join(','))
     .filter((x) => x !== key);
 };
 
-const Part1 = (input, dimensions = 3) => {
+function Part1(input, dimensions = 3) {
   let map = new Map();
   input.split('\r\n').map((line, y) => {
     line.split('').map((char, x) => {
@@ -34,7 +34,7 @@ const Part1 = (input, dimensions = 3) => {
   return gol(map, neighbors, (current, active) => (current && active === 2) || active === 3, 6).count;
 };
 
-const Part2 = (input) => {
+function Part2(input) {
   return Part1(input, 4);
 };
 

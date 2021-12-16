@@ -3,12 +3,12 @@ import assert from 'assert';
 
 const file = fs.readFileSync('./input.txt', 'utf8');
 
-const findMostCommonBit = (numbers, digit) => {
+function findMostCommonBit(numbers, digit) {
     const counter = numbers.filter(number => number[digit] === '1').length;
     return counter >= numbers.length / 2 ? '1' : '0';
 }
 
-const Part1 = (input) => {
+function Part1(input) {
     const numbers = input.split('\n');
     const mask = parseInt('1'.repeat(numbers[0].length), 2);
     let mostCommon = '';
@@ -18,7 +18,7 @@ const Part1 = (input) => {
     return parseInt(mostCommon, 2) * (parseInt(mostCommon, 2) ^ mask);
 }
 
-const Part2 = (input) => {
+function Part2(input) {
     let numbers = input.split('\n');
     let numbers2 = input.split('\n');
     for (let digit = 0; numbers.length > 1; digit++) {

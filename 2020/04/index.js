@@ -3,7 +3,7 @@ import assert from 'assert';
 
 const file = fs.readFileSync('./input.txt', 'utf8'); //.split('\r\n\r\n');
 
-const Part1 = (input) => {
+function Part1(input) {
   return input
     .split('\r\n\r\n')
     .map((e) => e.split(/[ \r\n]/))
@@ -11,7 +11,7 @@ const Part1 = (input) => {
     .filter((el) => el.length === 8 || (el.length === 7 && !el.some((e) => /cid.*/.test(e)))).length;
 };
 
-const Part2 = (input) => {
+function Part2(input) {
   return input
     .split('\r\n\r\n')
     .map((e) => e.split(/[ \r\n]/))

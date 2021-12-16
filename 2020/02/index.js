@@ -12,17 +12,17 @@ const data = file.map((str) => {
   return { policy, password };
 });
 
-const countOccurances = (string, letter) => {
+function countOccurances(string, letter) {
   let regex = new RegExp(letter, 'g');
   return (string.match(regex) || []).length;
 };
 
 // Big Brain XOR
-const countOnlyOnce = (password, policy) => {
+function countOnlyOnce(password, policy) {
   if (!(password[policy.min - 1] == policy.letter) != !(password[policy.max - 1] == policy.letter)) return true;
 };
 
-const Part1 = () => {
+function Part1() {
   let counter = 0;
   data.forEach((el) => {
     let hits = countOccurances(el.password, el.policy.letter);
@@ -31,7 +31,7 @@ const Part1 = () => {
   return counter;
 };
 
-const Part2 = () => {
+function Part2() {
   let counter = 0;
   data.forEach((el) => {
     if (countOnlyOnce(el.password, el.policy)) counter++;

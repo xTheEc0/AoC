@@ -3,15 +3,15 @@ import assert from 'assert';
 
 const file = fs.readFileSync('./input.txt', 'utf8');
 
-const mark = (points, x, y) => {
+function mark(points, x, y) {
     points[`${x},${y}`] = (points[`${x},${y}`] || 0) + 1;
 };
 
-const direction = (a, b) => {
+function direction(a, b) {
     return a === b ? 0 : a < b ? 1 : -1;
 };
 
-const Part1 = (input, diagonal = false) => {
+function Part1(input, diagonal = false) {
     const lines = input.split('\n').map(line => {
         const [from, to] = line.split(' -> ').map(x => x.split(',').map(x => +x));
         return { from, to };
@@ -34,7 +34,7 @@ const Part1 = (input, diagonal = false) => {
     return Object.values(points).filter(x => x > 1).length;
 };
 
-const Part2 = (input) => {
+function Part2(input) {
     return Part1(input, true);
 }
 

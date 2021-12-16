@@ -3,7 +3,7 @@ import assert from 'assert';
 
 const file = fs.readFileSync('./input.txt', 'utf8').split('\r\n');
 
-const Part1 = (input) => {
+function Part1(input) {
   const rules = input.reduce((rules, line) => {
     const [, color, otherColors] = /(\w+ \w+) bags contain (.*)\./.exec(line);
 
@@ -16,7 +16,7 @@ const Part1 = (input) => {
     return rules;
   }, {});
 
-  const expand = (bag) => {
+  function expand(bag) {
     const colors = [...rules[bag].values()];
 
     for (const color of rules[bag].values()) {
@@ -29,17 +29,17 @@ const Part1 = (input) => {
   return Object.keys(rules).filter((key) => expand(key).includes('shiny gold')).length;
 };
 
-const Part2 = (input) => {
+function Part2(input) {
   const rules = input.reduce((rules, line) => {
     const [, color, otherColors] = /(\w+ \w+) bags contain (.*)\./.exec(line);
 
     const compatibleWith =
       otherColors !== 'no other bags'
         ? otherColors.split(', ').map((other) => {
-            const [, units, color] = /(\d+) (\w+ \w+) bags?/.exec(other);
+          const [, units, color] = /(\d+) (\w+ \w+) bags?/.exec(other);
 
-            return { units: parseInt(units), color };
-          })
+          return { units: parseInt(units), color };
+        })
         : [];
 
     rules.set(color, []);
@@ -49,7 +49,7 @@ const Part2 = (input) => {
     return rules;
   }, new Map());
 
-  const traverse = (bag) => {
+  function traverse(bag) {
     let total = 0;
 
     for (const { color, units } of rules.get(bag)) {

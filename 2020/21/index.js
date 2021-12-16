@@ -3,7 +3,7 @@ import assert from 'assert';
 
 const file = fs.readFileSync('./input.txt', 'utf8');
 
-const parse = (input) => {
+function parse(input) {
   let allIngredients = new Map();
   const allAllergens = new Set();
   const foods = input
@@ -36,12 +36,12 @@ const parse = (input) => {
   return allIngredients;
 };
 
-const Part1 = (input) => {
+function Part1(input) {
   const allIngredients = parse(input).filter((x) => x.mightContain.size === 0);
   return allIngredients.reduce((sum, { count }) => sum + count, 0);
 };
 
-const Part2 = (input) => {
+function Part2(input) {
   const allIngredients = parse(input).filter((x) => x.mightContain.size !== 0);
   let done;
   while (done !== allIngredients.length) {

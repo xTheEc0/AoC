@@ -3,11 +3,11 @@ import assert from 'assert';
 
 const file = fs.readFileSync('./input.txt', 'utf8');
 
-const Part1 = (input) => {
+function Part1(input) {
     return 0;
 }
 
-const Part2 = (input) => {
+function Part2(input) {
     return 0;
 }
 

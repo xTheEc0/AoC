@@ -3,7 +3,7 @@ import assert from 'assert';
 
 const file = fs.readFileSync('./input.txt', 'utf8').split('\r\n');
 
-const simple = (formula) => {
+function simple(formula) {
   let result = 0;
   let operation = '+';
   formula.split(' ').forEach((x) => {
@@ -18,7 +18,7 @@ const simple = (formula) => {
   return result;
 };
 
-const solve = (formula, precedence) => {
+function solve(formula, precedence) {
   while (formula.includes('(') || (precedence && formula.includes('+') && formula.includes('*'))) {
     if (precedence) {
       formula = formula.replace(/(\d+ \+ )+\d+/g, (x) => simple(x));
@@ -28,11 +28,11 @@ const solve = (formula, precedence) => {
   return simple(formula);
 };
 
-const Part1 = (input) => {
+function Part1(input) {
   return input.map((x) => solve(x)).reduce((a, b) => a + b);
 };
 
-const Part2 = (input) => {
+function Part2(input) {
   return input.map((x) => solve(x, true)).reduce((a, b) => a + b);
 };
 

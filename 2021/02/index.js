@@ -3,7 +3,7 @@ import assert from 'assert';
 
 const file = fs.readFileSync('./input.txt', 'utf8');
 
-const Part1 = (input) => {
+function Part1(input) {
     let [x, y] = [0, 0];
     const lines = input.split('\n').map(line => {
         const [direction, value] = line.split(' ');
@@ -23,7 +23,7 @@ const Part1 = (input) => {
     return x * y;
 }
 
-const Part2 = (input) => {
+function Part2(input) {
     let [aim, x, y] = [0, 0, 0];
     const lines = input.split('\n').map(line => {
         const [direction, value] = line.split(' ');

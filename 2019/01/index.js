@@ -3,7 +3,7 @@ import assert from 'assert';
 
 const file = fs.readFileSync('./input.txt', 'utf8').split('\n').map(Number);
 
-const fuel = (mass) => {
+function fuel(mass) {
   return Math.floor(mass / 3) - 2;
 };
 
@@ -16,7 +16,7 @@ console.log(`1-1 answer: ${file.reduce((total, mass) => total + fuel(mass), 0)}`
 
 // --- // --- //
 
-const fuelForFuel = (mass) => {
+function fuelForFuel(mass) {
   let total = 0;
   let nextFuel = fuel(mass);
 

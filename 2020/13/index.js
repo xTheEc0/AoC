@@ -3,7 +3,7 @@ import assert from 'assert';
 
 const file = fs.readFileSync('./input.txt', 'utf8').split('\r\n');
 
-const Part1 = (input) => {
+function Part1(input) {
   const findEarliest = (id, earliestTimestamp) => {
     let wait = id;
     while (wait < earliestTimestamp) {
@@ -23,7 +23,7 @@ const Part1 = (input) => {
   return (diff.earliest - earliestTimestamp) * diff.id;
 };
 
-const Part2 = (input) => {
+function Part2(input) {
   const solveMMI = (a, mod) => {
     const b = a % mod;
     for (let x = 1n; x < mod; x++) {
@@ -34,7 +34,7 @@ const Part2 = (input) => {
     return 1n;
   };
 
-  const solveCRT = (system) => {
+  function solveCRT(system) {
     const prod = system.reduce((p, con) => p * con.n, 1n);
     return (
       system.reduce((sm, con) => {

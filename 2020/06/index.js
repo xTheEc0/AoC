@@ -6,7 +6,7 @@ const file = fs
   .split('\r\n\r\n')
   .filter((x) => x);
 
-const Part1 = (input) => {
+function Part1(input) {
   let sum = 0;
   input.forEach((el) => {
     sum += new Set([...el.replace(/[\r\n]{1,2}/g, '')]).size;
@@ -14,7 +14,7 @@ const Part1 = (input) => {
   return sum;
 };
 
-const Part2 = (input) => {
+function Part2(input) {
   let sum = 0;
   input.forEach((el) => {
     sum += [...new Set([...el.replace(/[\r\n]{1,2}/g, '')])].filter((char) =>

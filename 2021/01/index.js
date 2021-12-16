@@ -3,14 +3,14 @@ import assert from 'assert';
 
 const file = fs.readFileSync('./input.txt', 'utf8');
 
-const Part1 = (input) => {
+function Part1(input) {
   return input
     .split('\n')
     .map(x => +x)
     .filter((x, i, a) => i > 0 && x > a[i - 1]).length;
 }
 
-const Part2 = (input) => {
+function Part2(input) {
   return input
     .split('\n')
     .map(x => +x)

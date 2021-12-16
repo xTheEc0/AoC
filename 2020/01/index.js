@@ -3,7 +3,7 @@ import assert from 'assert';
 
 const file = fs.readFileSync('./input.txt', 'utf8').split('\r\n').map(Number);
 
-const Part1 = (data) => {
+function Part1(data) {
   for (i = 0; i < data.length - 1; i++) {
     for (j = 1; j < data.length; j++) {
       if (i === j) continue;
@@ -14,7 +14,7 @@ const Part1 = (data) => {
   }
 };
 
-const Part2 = (data) => {
+function Part2(data) {
   for (i = 0; i < data.length - 2; i++) {
     for (j = 1; j < data.length - 1; j++) {
       for (n = 2; n < data.length; n++) {

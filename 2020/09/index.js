@@ -3,7 +3,7 @@ import assert from 'assert';
 
 const file = fs.readFileSync('./input.txt', 'utf8').split('\r\n').map(Number);
 
-const Part1 = (input, preamble = 25) => {
+function Part1(input, preamble = 25) {
   for (let i = preamble; i < input.length; i++) {
     if (!contains(input[i], new Set(input.slice(i - preamble, i)))) {
       return input[i];
@@ -11,7 +11,7 @@ const Part1 = (input, preamble = 25) => {
   }
 };
 
-const Part2 = (input, preamble = 25) => {
+function Part2(input, preamble = 25) {
   for (let i = preamble; i < input.length; i++) {
     if (!contains(input[i], new Set(input.slice(i - preamble, i)))) {
       return contiguous(input, input[i]);
@@ -19,7 +19,7 @@ const Part2 = (input, preamble = 25) => {
   }
 };
 
-const contiguous = (numbers, sum) => {
+function contiguous(numbers, sum) {
   for (let i = 0; i < numbers.length; i++) {
     let total = numbers[i];
 
@@ -39,7 +39,7 @@ const contiguous = (numbers, sum) => {
   }
 };
 
-const contains = (sum, range) => {
+function contains(sum, range) {
   return [...range.values()].some((number) => range.has(sum - number));
 };
 

@@ -3,7 +3,7 @@ import assert from 'assert';
 
 const file = fs.readFileSync('./input.txt', 'utf8')
 
-const Part1 = (input, cost = (a, b) => Math.abs(a - b)) => {
+function Part1(input, cost = (a, b) => Math.abs(a - b)) {
     const positions = input.split(',').map(x => +x);
     const min = Math.min(...positions);
     const max = Math.max(...positions);
@@ -14,7 +14,7 @@ const Part1 = (input, cost = (a, b) => Math.abs(a - b)) => {
     return Math.min(...distances);
 }
 
-const Part2 = (input) => {
+function Part2(input) {
     return Part1(input, (a, b) => (Math.abs(a - b) * (Math.abs(a - b) + 1)) / 2);
 }
 

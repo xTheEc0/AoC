@@ -3,25 +3,25 @@ import assert from 'assert';
 
 const file = fs.readFileSync('./input.txt', 'utf8');
 
-const toBorder = (line) => {
+function toBorder(line) {
   return parseInt(line.replaceAll('.', '0').replaceAll('#', '1'), 2);
 };
-const reverse = (line) => {
+function reverse(line) {
   return line.split('').reverse().join('');
 };
-const topBorder = (tile) => {
+function topBorder(tile) {
   return tile[0];
 };
-const bottomBorder = (tile) => {
+function bottomBorder(tile) {
   return tile[tile.length - 1];
 };
-const leftBorder = (tile) => {
+function leftBorder(tile) {
   return tile.map((x) => x[0]).join('');
 };
-const rightBorder = (tile) => {
+function rightBorder(tile) {
   return tile.map((x) => x[x.length - 1]).join('');
 };
-const rotateRight = (tile) => {
+function rotateRight(tile) {
   return tile.map((row, i) =>
     [...tile]
       .reverse()
@@ -29,11 +29,11 @@ const rotateRight = (tile) => {
       .join('')
   );
 };
-const mirrorHorizontal = (tile) => {
+function mirrorHorizontal(tile) {
   return tile.map((line) => line.split('').reverse().join(''));
 };
 
-const getBorders = (tile) => {
+function getBorders(tile) {
   return [
     toBorder(topBorder(tile)),
     toBorder(bottomBorder(tile)),
@@ -46,7 +46,7 @@ const getBorders = (tile) => {
   ];
 };
 
-const parse = (tile) => {
+function parse(tile) {
   let [id, ...rest] = tile.split('\r\n');
   [, id] = id.match(/^Tile (\d+):$/);
   id = +id;
@@ -57,7 +57,7 @@ const parse = (tile) => {
   };
 };
 
-const countMonsters = (image) => {
+function countMonsters(image) {
   const pattern = [/^..................#./, /^#....##....##....###/, /^.#..#..#..#..#..#.../];
   let count = 0;
   for (let index = 0; index < image.length - 2; index++) {
@@ -70,7 +70,7 @@ const countMonsters = (image) => {
   return count;
 };
 
-const findCorners = (tiles) => {
+function findCorners(tiles) {
   const borderToIds = new Map();
   tiles.forEach(({ id, borders }) => {
     borders.forEach((x) => {
@@ -94,13 +94,13 @@ const findCorners = (tiles) => {
   return corners;
 };
 
-const Part1 = (input) => {
+function Part1(input) {
   const tiles = input.split('\r\n\r\n').map((x) => parse(x));
   const corners = findCorners(tiles);
   return corners.reduce((a, b) => a * b, 1);
 };
 
-const Part2 = (input) => {
+function Part2(input) {
   let tiles = input.split('\r\n\r\n').map((x) => parse(x));
   const corners = findCorners(tiles);
 

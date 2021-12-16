@@ -8,22 +8,22 @@ const file = fs
 
 // prettier-ignore
 const adjacencyMatrix = [
-    [-1, -1], [0, -1], [1, -1],
-    [-1, 0], /* X */ [1, 0],
-    [-1, 1], [0, 1], [1, 1],
-  ];
+  [-1, -1], [0, -1], [1, -1],
+  [-1, 0], /* X */[1, 0],
+  [-1, 1], [0, 1], [1, 1],
+];
 
 const print = (state) => state.map((row) => row.join('')).join('\n');
 
-const Part1 = (input) => {
+function Part1(input) {
   const cycle = (state) =>
-    state.map((row, y) =>
-      row.map((column, x) => {
-        const occupiedNeighbors = adjacencyMatrix.map(([dx, dy]) => (state[y + dy] || [])[x + dx] || '.').filter((seat) => seat === '#');
+  state.map((row, y) =>
+    row.map((column, x) => {
+      const occupiedNeighbors = adjacencyMatrix.map(([dx, dy]) => (state[y + dy] || [])[x + dx] || '.').filter((seat) => seat === '#');
 
-        return column === 'L' && occupiedNeighbors.length === 0 ? '#' : column === '#' && occupiedNeighbors.length >= 4 ? 'L' : column;
-      })
-    );
+      return column === 'L' && occupiedNeighbors.length === 0 ? '#' : column === '#' && occupiedNeighbors.length >= 4 ? 'L' : column;
+    })
+  );
 
   let lastState = [];
   let currentState = input;
@@ -36,8 +36,8 @@ const Part1 = (input) => {
   return currentState.flat().filter((seat) => seat === '#').length;
 };
 
-const Part2 = (input) => {
-  const marcher = (state, x, y) => ([dx, dy]) => {
+function Part2(input) {
+  const marcher = (state, x, y) => ([dx, dy]) =>{
     let steps = 1;
 
     while (true) {
@@ -60,9 +60,9 @@ const Part2 = (input) => {
       row.map((column, x) => {
         const occupiedNeighbors = adjacencyMatrix.map(marcher(state, x, y)).filter((seat) => seat === '#');
 
-        return column === 'L' && occupiedNeighbors.length === 0 ? '#' : column === '#' && occupiedNeighbors.length >= 5 ? 'L' : column;
-      })
-    );
+      return column === 'L' && occupiedNeighbors.length === 0 ? '#' : column === '#' && occupiedNeighbors.length >= 5 ? 'L' : column;
+    })
+  );
 
   let lastState = [];
   let currentState = input;

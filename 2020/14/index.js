@@ -3,12 +3,12 @@ import assert from 'assert';
 
 const file = fs.readFileSync('./input.txt', 'utf8').split('\r\n');
 
-const Part1 = (input) => {
+function Part1(input) {
   const memory = new Map();
 
   let bitmask;
 
-  const mask = (value) => {
+  function mask(value) {
     const bits = value.toString(2).padStart(36, '0').split('');
     const result = bitmask.map((bit, i) => (bit === 'X' ? bits[i] : bit));
 
@@ -28,12 +28,12 @@ const Part1 = (input) => {
   return [...memory.values()].reduce((a, b) => a + b, 0);
 };
 
-const Part2 = (input) => {
+function Part2(input) {
   const memory = new Map();
 
   let bitmask;
 
-  const mask = (value) => {
+  function mask(value) {
     const address = value.toString(2).padStart(36, '0').split('');
     const result = bitmask.map((bit, i) => (bit === 'X' ? 'X' : bit === '0' ? address[i] : bit));
     const numberOfFloats = result.filter((bit) => bit === 'X').length;

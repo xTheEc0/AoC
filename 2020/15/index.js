@@ -3,7 +3,7 @@ import assert from 'assert';
 
 const file = fs.readFileSync('./input.txt', 'utf8');
 
-const findNthTerm = (input, n) => {
+function findNthTerm(input, n) {
   numbers = input.split(',').map(Number);
   const seen = new Map(numbers.flatMap((number, index) => (index < numbers.length - 1 ? [[number, index]] : [])));
 
@@ -18,11 +18,11 @@ const findNthTerm = (input, n) => {
   return last;
 };
 
-const Part1 = (input) => {
+function Part1(input) {
   return findNthTerm(input, 2020);
 };
 
-const Part2 = (input) => {
+function Part2(input) {
   return findNthTerm(input, 30000000);
 };
 

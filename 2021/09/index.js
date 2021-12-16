@@ -3,15 +3,15 @@ import assert from 'assert';
 
 const file = fs.readFileSync('./input.txt', 'utf8');
 
-const neighbors = (map, point) =>
-    [
-        map[point.i - 1] && map[point.i - 1][point.j + 0],
-        map[point.i + 1] && map[point.i + 1][point.j + 0],
-        map[point.i + 0] && map[point.i + 0][point.j - 1],
-        map[point.i + 0] && map[point.i + 0][point.j + 1],
-    ].filter(x => x !== undefined);
+function neighbors(map, point)
+[
+    map[point.i - 1] && map[point.i - 1][point.j + 0],
+    map[point.i + 1] && map[point.i + 1][point.j + 0],
+    map[point.i + 0] && map[point.i + 0][point.j - 1],
+    map[point.i + 0] && map[point.i + 0][point.j + 1],
+].filter(x => x !== undefined);
 
-const markBasin = (map, point) => {
+function markBasin(map, point) {
     if (point.basin || point.val === 9) {
         return 0;
     } else {
@@ -21,7 +21,7 @@ const markBasin = (map, point) => {
     }
 }
 
-const findBasins = (input) => {
+function findBasins(input) {
     const basins = [];
     const map = input
         .split('\n')
@@ -36,11 +36,11 @@ const findBasins = (input) => {
     return basins.sort((a, b) => b.size - a.size);
 }
 
-const Part1 = (input) => {
+function Part1(input) {
     return findBasins(input).reduce((prev, x) => prev + x.risk, 0);
 }
 
-const Part2 = (input) => {
+function Part2(input) {
     return findBasins(input)
         .slice(0, 3)
         .reduce((prev, x) => prev * x.size, 1);

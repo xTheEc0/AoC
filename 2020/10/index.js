@@ -7,7 +7,7 @@ const file = fs
   .map(Number)
   .sort((a, b) => a - b);
 
-const Part1 = (input) => {
+function Part1(input) {
   const jolts = input.reduce(
     (acc, jolt, idx, all) => {
       const prev = all[idx - 1];
@@ -20,7 +20,7 @@ const Part1 = (input) => {
   return jolts['1'] * jolts['3'];
 };
 
-const Part2 = (input) => {
+function Part2(input) {
   return input
     .reduce(
       (computed, jolt) => {

@@ -12,7 +12,7 @@ const go = {
   se: ({ x, y }) => ({ x: x + 0.5, y: y + 1 }),
 };
 
-const parse = (input) => {
+function parse(input) {
   const instructions = input.split('\r\n').map((line) => line.match(/(w|e|nw|ne|sw|se)/g));
   const map = new Map();
   instructions.forEach((x) => {
@@ -24,19 +24,19 @@ const parse = (input) => {
   return map;
 };
 
-const Part1 = (input) => {
+function Part1(input) {
   const map = parse(input);
   return [...map.values()].filter((x) => x).length;
 };
 
-const neighbors = (key) => {
+function neighbors(key) {
   const [x, y] = key.split(',').map((x) => +x);
   return Object.values(go)
     .map((f) => f({ x, y }))
     .map((p) => `${p.x},${p.y}`);
 };
 
-const Part2 = (input) => {
+function Part2(input) {
   let map = parse(input);
   return gol(map, neighbors, (current, active) => (current && active === 1) || active === 2, 100).count;
 };

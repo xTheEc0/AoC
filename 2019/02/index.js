@@ -5,7 +5,7 @@ const file = fs.readFileSync('./input.txt', 'utf8').split(',').map(Number);
 file[1] = 12;
 file[2] = 2;
 
-const opcode = (inp) => {
+function opcode(inp) {
   let a = [...inp];
   for (let p = 0; p <= a.length; p += 4) {
     switch (a[p]) {
@@ -32,7 +32,7 @@ assert.deepStrictEqual(opcode([2, 4, 4, 5, 99, 0]), [2, 4, 4, 5, 99, 9801]);
 assert.deepStrictEqual(opcode([1, 1, 1, 4, 99, 5, 6, 0, 99]), [30, 1, 1, 4, 2, 5, 6, 0, 99]);
 console.log(`2-1 answer: ${opcode(file)[0]}`);
 
-const find = (inp, r) => {
+function find(inp, r) {
   for (let n = 0; n < 100; ++n) {
     for (let v = 0; v < 100; ++v) {
       let a = [...inp];

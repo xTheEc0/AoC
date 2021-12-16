@@ -3,16 +3,16 @@ import assert from 'assert';
 
 const file = fs.readFileSync('./input.txt', 'utf8').split('\r\n');
 
-const findSeatID = (input) => {
+function findSeatID(input) {
   return parseInt(input.replace(/[BR]/g, '1').replace(/[FL]/g, '0'), 2);
 };
 
-const Part1 = (input) => {
+function Part1(input) {
   const SeatIDs = input.map((x) => findSeatID(x));
   return Math.max(...SeatIDs);
 };
 
-const Part2 = (input) => {
+function Part2(input) {
   const SeatIDs = input.map((x) => findSeatID(x));
   let highest = Math.max(...SeatIDs);
   let lowest = Math.min(...SeatIDs);

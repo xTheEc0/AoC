@@ -3,13 +3,13 @@ import assert from 'assert';
 
 const file = fs.readFileSync('./input.txt', 'utf8');
 
-const Part1 = (input) => {
+function Part1(input) {
   return Array.from(input).reduce((acc, cur) => {
     return acc + (cur === '(' ? 1 : -1);
   }, 0);
 };
 
-const Part2 = (input) => {
+function Part2(input) {
   const array = Array.from(input);
   let currentFloor = 0;
 
