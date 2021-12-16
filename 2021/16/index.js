@@ -73,11 +73,11 @@ console.log(`Part 1: ${Part1(file)}`); // 938
 console.log(`Part 2: ${Part2(file)}`); // 1495959086337
 
 // Test data
-const testData = `FILL IN THE TEST DATA HERE`
+const testData = `8A004A801A8002F478`
 
 console.log(`\n\n ~ TESTS ~ `);
 // Part 1 tests
-assert.strictEqual(Part1(testData), EXPECTED_RESULT_HERE);
+assert.strictEqual(Part1(testData), 16);
 
 // Part 2 tests
-assert.strictEqual(Part2(testData), EXPECTED_RESULT_HERE);
+assert.strictEqual(Part2(testData), 15);
