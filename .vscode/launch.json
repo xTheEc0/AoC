@@ -10,6 +10,18 @@
       "name": "Launch In Focus",
       "program": "${file}",
       "cwd": "${fileDirname}"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch with CMD args",
+      "program": "${file}",
+      "args": [
+        "2021",
+        "15"
+      ],
+      "cwd": "${fileDirname}",
+      "console": "integratedTerminal" 
     }
   ]
 }
