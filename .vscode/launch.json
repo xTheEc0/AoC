@@ -18,7 +18,7 @@
       "program": "${file}",
       "args": [
         "2021",
-        "15"
+        "21"
       ],
       "cwd": "${fileDirname}",
       "console": "integratedTerminal" 

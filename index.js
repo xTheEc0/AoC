@@ -99,6 +99,6 @@ async function downloadInputFile(year, day) {
         return console.error(`\n\n${error.message}\n\n`);
     }
     if (response) {
-        fs.writeFileSync(inputFilePath, response.data);
+        fs.writeFileSync(inputFilePath, response.data.trim());
     }
 }
