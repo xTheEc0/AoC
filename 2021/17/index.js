@@ -25,7 +25,7 @@ function calculate(input) {
             .split('=')
             .pop()
             .split('..')
-            .map(x => +x),
+            .map(Number),
     );
     const deepY = Math.min(...yRange);
     const farX = Math.max(...xRange);

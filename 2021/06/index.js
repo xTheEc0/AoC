@@ -4,7 +4,7 @@ import assert from 'assert';
 const file = fs.readFileSync('./input.txt', 'utf8')
 
 function Part1(input, days = 80) {
-    const fish = input.split(',').map(x => +x);
+    const fish = input.split(',').map(Number);
     let map = {};
     for (let i = 0; i < fish.length; i++) {
         map[fish[i]] = (map[fish[i]] || 0) + 1;

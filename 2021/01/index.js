@@ -6,14 +6,14 @@ const file = fs.readFileSync('./input.txt', 'utf8');
 function Part1(input) {
   return input
     .split('\n')
-    .map(x => +x)
+    .map(Number)
     .filter((x, i, a) => i > 0 && x > a[i - 1]).length;
 }
 
 function Part2(input) {
   return input
     .split('\n')
-    .map(x => +x)
+    .map(Number)
     .filter((x, i, a) => i > 2 && x > a[i - 3]).length;
 }
 
