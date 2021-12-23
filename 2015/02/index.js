@@ -6,9 +6,13 @@ const file = fs.readFileSync('./input.txt', 'utf8').split('\r\n');
 function parse(input) {
   return input.map((x) => {
     const measurements = x.trim().split('x');
-    return { length: measurements[0], width: measurements[1], height: measurements[2] };
+    return {
+      length: measurements[0],
+      width: measurements[1],
+      height: measurements[2],
+    };
   });
-};
+}
 
 function Part1(input) {
   return parse(input).reduce((acc, cur) => {
@@ -20,7 +24,7 @@ function Part1(input) {
     const smallestSide = Math.min(frontBack, topBottom, sides);
     return acc + 2 * frontBack + 2 * topBottom + 2 * sides + smallestSide;
   }, 0);
-};
+}
 
 function Part2(input) {
   return parse(input).reduce((acc, cur) => {
@@ -32,7 +36,7 @@ function Part2(input) {
     const smallestPerimeter = Math.min(frontBack, topBottom, sides);
     return acc + smallestPerimeter + length * width * height;
   }, 0);
-};
+}
 
 console.log(`Part 1: ${Part1(file)}`); // 1588178
 console.log(`Part 2: ${Part2(file)}`); // 3783758

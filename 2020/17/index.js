@@ -13,14 +13,14 @@ function offsets(dimensions) {
     cache[dimensions] = rest.flatMap((x) => [-1, 0, 1].map((n) => [n, ...x]));
   }
   return cache[dimensions];
-};
+}
 
 function neighbors(key) {
   const coordinates = key.split(',').map((x) => +x);
   return offsets(coordinates.length)
     .map((x) => x.map((c, i) => coordinates[i] + c).join(','))
     .filter((x) => x !== key);
-};
+}
 
 function Part1(input, dimensions = 3) {
   let map = new Map();
@@ -31,12 +31,17 @@ function Part1(input, dimensions = 3) {
     });
   });
 
-  return gol(map, neighbors, (current, active) => (current && active === 2) || active === 3, 6).count;
-};
+  return gol(
+    map,
+    neighbors,
+    (current, active) => (current && active === 2) || active === 3,
+    6
+  ).count;
+}
 
 function Part2(input) {
   return Part1(input, 4);
-};
+}
 
 console.time('Part 1');
 console.log(`Part 1: ${Part1(file)}`); // 289

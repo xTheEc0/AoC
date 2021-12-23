@@ -19,7 +19,7 @@ export function generation(map, neighbors, alive) {
     }
   }
   return { next, count };
-};
+}
 
 export function gol(map, neighbors, alive, iterations) {
   let result;
@@ -28,4 +28,4 @@ export function gol(map, neighbors, alive, iterations) {
     map = result.next;
   }
   return result;
-};
+}

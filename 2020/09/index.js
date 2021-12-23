@@ -9,7 +9,7 @@ function Part1(input, preamble = 25) {
       return input[i];
     }
   }
-};
+}
 
 function Part2(input, preamble = 25) {
   for (let i = preamble; i < input.length; i++) {
@@ -17,7 +17,7 @@ function Part2(input, preamble = 25) {
       return contiguous(input, input[i]);
     }
   }
-};
+}
 
 function contiguous(numbers, sum) {
   for (let i = 0; i < numbers.length; i++) {
@@ -37,11 +37,11 @@ function contiguous(numbers, sum) {
       }
     }
   }
-};
+}
 
 function contains(sum, range) {
   return [...range.values()].some((number) => range.has(sum - number));
-};
+}
 
 console.log(`Part 1: ${Part1(file)}`); // 400480901
 console.log(`Part 2: ${Part2(file)}`); // 67587168

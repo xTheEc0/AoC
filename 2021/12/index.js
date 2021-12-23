@@ -5,7 +5,7 @@ const file = fs.readFileSync('./input.txt', 'utf8');
 
 function Part1(input, twice = false) {
   const connections = {};
-  input.split('\n').forEach(x => {
+  input.split('\n').forEach((x) => {
     const [src, dest] = x.split('-');
     connections[src] = (connections[src] || []).concat(dest);
     connections[dest] = (connections[dest] || []).concat(src);
@@ -17,8 +17,8 @@ function Part1(input, twice = false) {
     if (next.point === 'end') {
       paths++;
     } else {
-      const neighbors = connections[next.point].filter(p => p !== 'start');
-      neighbors.forEach(point => {
+      const neighbors = connections[next.point].filter((p) => p !== 'start');
+      neighbors.forEach((point) => {
         if (point.toLowerCase() !== point || !next.path.includes(point)) {
           queue.push({ point, path: [...next.path, point], twice: next.twice });
         } else if (!next.twice) {
@@ -44,7 +44,7 @@ A-c
 A-b
 b-d
 A-end
-b-end`
+b-end`;
 
 console.log(`\n\n ~ TESTS ~ `);
 // Part 1 tests

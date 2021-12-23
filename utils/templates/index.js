@@ -4,18 +4,18 @@ import assert from 'assert';
 const file = fs.readFileSync('./input.txt', 'utf8');
 
 function Part1(input) {
-    return 0;
+  return 0;
 }
 
 function Part2(input) {
-    return 0;
+  return 0;
 }
 
 console.log(`Part 1: ${Part1(file)}`); // Answer
 console.log(`Part 2: ${Part2(file)}`); // Answer
 
 // Test data
-const testData = `FILL IN THE TEST DATA HERE`
+const testData = `FILL IN THE TEST DATA HERE`;
 
 console.log(`\n\n ~ TESTS ~ `);
 // Part 1 tests

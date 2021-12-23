@@ -30,7 +30,7 @@ const testData = `199
 240
 269
 260
-263`
+263`;
 
 // Part 1 tests
 assert.strictEqual(Part1(testData), 7);

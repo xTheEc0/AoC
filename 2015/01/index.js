@@ -7,7 +7,7 @@ function Part1(input) {
   return Array.from(input).reduce((acc, cur) => {
     return acc + (cur === '(' ? 1 : -1);
   }, 0);
-};
+}
 
 function Part2(input) {
   const array = Array.from(input);
@@ -20,7 +20,7 @@ function Part2(input) {
       return i + 1;
     }
   }
-};
+}
 
 console.log(`Part 1: ${Part1(file)}`); // 232
 console.log(`Part 2: ${Part2(file)}`); // 1783

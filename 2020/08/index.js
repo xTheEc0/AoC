@@ -9,7 +9,7 @@ function parse(input) {
 
     return [operation, parseInt(value)];
   });
-};
+}
 
 function Part1(input) {
   const instructions = parse(input);
@@ -39,13 +39,16 @@ function Part1(input) {
   }
 
   return acc;
-};
+}
 
 function Part2(input) {
   const instructions = parse(input);
 
   for (let i = 0; i < instructions.length; i++) {
-    const patched = instructions.map(([operation, value]) => [operation, value]);
+    const patched = instructions.map(([operation, value]) => [
+      operation,
+      value,
+    ]);
 
     if (instructions[i][0] === 'jmp') {
       patched[i][0] = 'nop';
@@ -84,7 +87,7 @@ function Part2(input) {
       }
     }
   }
-};
+}
 
 console.log(`Part 1: ${Part1(file)}`); // 1584
 console.log(`Part 2: ${Part2(file)}`); // 920

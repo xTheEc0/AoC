@@ -8,15 +8,21 @@ function Part1(input) {
     .split('\r\n\r\n')
     .map((e) => e.split(/[ \r\n]/))
     .map((ar) => ar.filter((a) => a))
-    .filter((el) => el.length === 8 || (el.length === 7 && !el.some((e) => /cid.*/.test(e)))).length;
-};
+    .filter(
+      (el) =>
+        el.length === 8 || (el.length === 7 && !el.some((e) => /cid.*/.test(e)))
+    ).length;
+}
 
 function Part2(input) {
   return input
     .split('\r\n\r\n')
     .map((e) => e.split(/[ \r\n]/))
     .map((ar) => ar.filter((a) => a))
-    .filter((el) => el.length === 8 || (el.length === 7 && !el.some((e) => /cid.*/.test(e))))
+    .filter(
+      (el) =>
+        el.length === 8 || (el.length === 7 && !el.some((e) => /cid.*/.test(e)))
+    )
     .map((el) =>
       Object.assign(
         {},
@@ -38,9 +44,11 @@ function Part2(input) {
       return false;
     })
     .filter((el) => /#[a-f0-9]{6}$/.test(el.hcl))
-    .filter((el) => ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'].includes(el.ecl))
+    .filter((el) =>
+      ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'].includes(el.ecl)
+    )
     .filter((el) => el.pid.length === 9).length;
-};
+}
 
 console.log(`Part 1: ${Part1(file)}`); // 222
 console.log(`Part 2: ${Part2(file)}`); // 140

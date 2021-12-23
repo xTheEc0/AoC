@@ -12,7 +12,7 @@ function Part1(data) {
       }
     }
   }
-};
+}
 
 function Part2(data) {
   for (i = 0; i < data.length - 2; i++) {
@@ -25,7 +25,7 @@ function Part2(data) {
       }
     }
   }
-};
+}
 
 console.log(`Part 1: ${Part1(file)}`); // 974304
 console.log(`Part 2: ${Part2(file)}`); // 236430480

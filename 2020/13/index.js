@@ -19,9 +19,13 @@ function Part1(input) {
     .map((id) => parseInt(id))
     .map((id) => ({ id, earliest: findEarliest(id, earliestTimestamp) }));
 
-  const diff = busses.reduce((earliest, current) => (current.earliest < earliest.earliest ? current : earliest), busses[0]);
+  const diff = busses.reduce(
+    (earliest, current) =>
+      current.earliest < earliest.earliest ? current : earliest,
+    busses[0]
+  );
   return (diff.earliest - earliestTimestamp) * diff.id;
-};
+}
 
 function Part2(input) {
   const solveMMI = (a, mod) => {
@@ -42,7 +46,7 @@ function Part2(input) {
         return sm + con.a * solveMMI(p, con.n) * p;
       }, 0n) % prod
     );
-  };
+  }
 
   const congruences = input
     .split(',')
@@ -58,7 +62,7 @@ function Part2(input) {
     });
 
   return solveCRT(congruences);
-};
+}
 
 console.log(`Part 1: ${Part1(file)}`); // 3464
 console.log(`Part 2: ${Part2(file[1])}`); // 760171380521445.

@@ -15,7 +15,10 @@ function Part1(input) {
       ship.x += action === 'E' ? value : action === 'W' ? -value : 0;
       ship.y += action === 'N' ? value : action === 'S' ? -value : 0;
 
-      ship.heading = rotate(heading, action === 'L' ? value : action === 'R' ? -value : 0);
+      ship.heading = rotate(
+        heading,
+        action === 'L' ? value : action === 'R' ? -value : 0
+      );
 
       if (action === 'F') {
         ship.x += heading === 0 ? value : heading === 180 ? -value : 0;
@@ -28,7 +31,7 @@ function Part1(input) {
   );
 
   return Math.abs(ship.x) + Math.abs(ship.y);
-};
+}
 
 function Part2(input) {
   const rotate = ([dx, dy], degrees) => {
@@ -50,7 +53,10 @@ function Part2(input) {
       ship.wx += action === 'E' ? value : action === 'W' ? -value : 0;
       ship.wy += action === 'N' ? value : action === 'S' ? -value : 0;
 
-      const [wx, wy] = rotate([ship.wx, ship.wy], action === 'L' ? value : action === 'R' ? -value : 0);
+      const [wx, wy] = rotate(
+        [ship.wx, ship.wy],
+        action === 'L' ? value : action === 'R' ? -value : 0
+      );
 
       ship.wx = wx;
       ship.wy = wy;
@@ -64,7 +70,7 @@ function Part2(input) {
   );
 
   return Math.abs(ship.x) + Math.abs(ship.y);
-};
+}
 
 console.log(`Part 1: ${Part1(file)}`); // 2847
 console.log(`Part 2: ${Part2(file)}`); // 29839

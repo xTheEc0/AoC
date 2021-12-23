@@ -7,7 +7,12 @@ function Part1(input) {
   const rules = input.reduce((rules, line) => {
     const [, color, otherColors] = /(\w+ \w+) bags contain (.*)\./.exec(line);
 
-    const compatibleWith = otherColors !== 'no other bags' ? otherColors.split(', ').map((other) => /(\w+ \w+) bags?/.exec(other)[1]) : [];
+    const compatibleWith =
+      otherColors !== 'no other bags'
+        ? otherColors
+            .split(', ')
+            .map((other) => /(\w+ \w+) bags?/.exec(other)[1])
+        : [];
 
     rules[color] = new Set();
 
@@ -24,10 +29,11 @@ function Part1(input) {
     }
 
     return colors;
-  };
+  }
 
-  return Object.keys(rules).filter((key) => expand(key).includes('shiny gold')).length;
-};
+  return Object.keys(rules).filter((key) => expand(key).includes('shiny gold'))
+    .length;
+}
 
 function Part2(input) {
   const rules = input.reduce((rules, line) => {
@@ -36,10 +42,10 @@ function Part2(input) {
     const compatibleWith =
       otherColors !== 'no other bags'
         ? otherColors.split(', ').map((other) => {
-          const [, units, color] = /(\d+) (\w+ \w+) bags?/.exec(other);
+            const [, units, color] = /(\d+) (\w+ \w+) bags?/.exec(other);
 
-          return { units: parseInt(units), color };
-        })
+            return { units: parseInt(units), color };
+          })
         : [];
 
     rules.set(color, []);
@@ -57,10 +63,10 @@ function Part2(input) {
     }
 
     return total;
-  };
+  }
 
   return traverse('shiny gold');
-};
+}
 
 console.log(`Part 1: ${Part1(file)}`); // 161
 console.log(`Part 2: ${Part2(file)}`); // 30899

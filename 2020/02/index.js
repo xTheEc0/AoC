@@ -15,12 +15,16 @@ const data = file.map((str) => {
 function countOccurances(string, letter) {
   let regex = new RegExp(letter, 'g');
   return (string.match(regex) || []).length;
-};
+}
 
 // Big Brain XOR
 function countOnlyOnce(password, policy) {
-  if (!(password[policy.min - 1] == policy.letter) != !(password[policy.max - 1] == policy.letter)) return true;
-};
+  if (
+    !(password[policy.min - 1] == policy.letter) !=
+    !(password[policy.max - 1] == policy.letter)
+  )
+    return true;
+}
 
 function Part1() {
   let counter = 0;
@@ -29,7 +33,7 @@ function Part1() {
     if (hits >= el.policy.min && hits <= el.policy.max) counter++;
   });
   return counter;
-};
+}
 
 function Part2() {
   let counter = 0;
@@ -37,7 +41,7 @@ function Part2() {
     if (countOnlyOnce(el.password, el.policy)) counter++;
   });
   return counter;
-};
+}
 
 console.log(`Part 1: ${Part1()}`); // 519
 console.log(`Part 2: ${Part2()}`); // 708
@@ -47,6 +51,15 @@ assert.strictEqual(countOccurances('abcabc', 'a'), 2);
 assert.strictEqual(countOccurances('ccccccccc', 'c'), 9);
 
 // Part 2 tests
-assert.strictEqual(countOnlyOnce('abcde', { min: 1, max: 3, letter: 'a' }), true);
-assert.strictEqual(countOnlyOnce('cdefg', { min: 1, max: 3, letter: 'b' }), false);
-assert.strictEqual(countOnlyOnce('ccccccccc', { min: 2, max: 9, letter: 'c' }), false);
+assert.strictEqual(
+  countOnlyOnce('abcde', { min: 1, max: 3, letter: 'a' }),
+  true
+);
+assert.strictEqual(
+  countOnlyOnce('cdefg', { min: 1, max: 3, letter: 'b' }),
+  false
+);
+assert.strictEqual(
+  countOnlyOnce('ccccccccc', { min: 2, max: 9, letter: 'c' }),
+  false
+);

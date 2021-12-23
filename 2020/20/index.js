@@ -5,22 +5,22 @@ const file = fs.readFileSync('./input.txt', 'utf8');
 
 function toBorder(line) {
   return parseInt(line.replaceAll('.', '0').replaceAll('#', '1'), 2);
-};
+}
 function reverse(line) {
   return line.split('').reverse().join('');
-};
+}
 function topBorder(tile) {
   return tile[0];
-};
+}
 function bottomBorder(tile) {
   return tile[tile.length - 1];
-};
+}
 function leftBorder(tile) {
   return tile.map((x) => x[0]).join('');
-};
+}
 function rightBorder(tile) {
   return tile.map((x) => x[x.length - 1]).join('');
-};
+}
 function rotateRight(tile) {
   return tile.map((row, i) =>
     [...tile]
@@ -28,10 +28,10 @@ function rotateRight(tile) {
       .map((x) => x[i])
       .join('')
   );
-};
+}
 function mirrorHorizontal(tile) {
   return tile.map((line) => line.split('').reverse().join(''));
-};
+}
 
 function getBorders(tile) {
   return [
@@ -44,7 +44,7 @@ function getBorders(tile) {
     toBorder(reverse(rightBorder(tile))),
     toBorder(reverse(leftBorder(tile))),
   ];
-};
+}
 
 function parse(tile) {
   let [id, ...rest] = tile.split('\r\n');
@@ -55,20 +55,28 @@ function parse(tile) {
     tile: rest,
     borders: getBorders([...rest]),
   };
-};
+}
 
 function countMonsters(image) {
-  const pattern = [/^..................#./, /^#....##....##....###/, /^.#..#..#..#..#..#.../];
+  const pattern = [
+    /^..................#./,
+    /^#....##....##....###/,
+    /^.#..#..#..#..#..#.../,
+  ];
   let count = 0;
   for (let index = 0; index < image.length - 2; index++) {
     for (let i = 0; i < image.length; i++) {
-      if (image[index].slice(i).match(pattern[0]) && image[index + 1].slice(i).match(pattern[1]) && image[index + 2].slice(i).match(pattern[2])) {
+      if (
+        image[index].slice(i).match(pattern[0]) &&
+        image[index + 1].slice(i).match(pattern[1]) &&
+        image[index + 2].slice(i).match(pattern[2])
+      ) {
         count++;
       }
     }
   }
   return count;
-};
+}
 
 function findCorners(tiles) {
   const borderToIds = new Map();
@@ -92,13 +100,13 @@ function findCorners(tiles) {
     }
   }
   return corners;
-};
+}
 
 function Part1(input) {
   const tiles = input.split('\r\n\r\n').map((x) => parse(x));
   const corners = findCorners(tiles);
   return corners.reduce((a, b) => a * b, 1);
-};
+}
 
 function Part2(input) {
   let tiles = input.split('\r\n\r\n').map((x) => parse(x));
@@ -204,9 +212,11 @@ function Part2(input) {
     rotateRight(rotateRight(rotateRight(mirrorHorizontal(image)))),
   ].map((x) => countMonsters(x));
 
-  const sum = image.map((line) => line.split('').filter((c) => c === '#').length).reduce((a, b) => a + b);
+  const sum = image
+    .map((line) => line.split('').filter((c) => c === '#').length)
+    .reduce((a, b) => a + b);
   return sum - count.find((x) => x !== 0) * 15;
-};
+}
 
 console.time('Part 1');
 console.log(`Part 1: ${Part1(file)}`); // 17032646100079

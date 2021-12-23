@@ -25,7 +25,9 @@ function parse(input) {
     food.allergens.forEach((x) => allAllergens.add(x));
   });
   allIngredients = [...allIngredients.values()];
-  allIngredients.forEach((ingredient) => (ingredient.mightContain = new Set(allAllergens)));
+  allIngredients.forEach(
+    (ingredient) => (ingredient.mightContain = new Set(allAllergens))
+  );
   foods.forEach((food) => {
     allIngredients.forEach((ingredient) => {
       if (!food.ingredients.includes(ingredient.name)) {
@@ -34,12 +36,12 @@ function parse(input) {
     });
   });
   return allIngredients;
-};
+}
 
 function Part1(input) {
   const allIngredients = parse(input).filter((x) => x.mightContain.size === 0);
   return allIngredients.reduce((sum, { count }) => sum + count, 0);
-};
+}
 
 function Part2(input) {
   const allIngredients = parse(input).filter((x) => x.mightContain.size !== 0);
@@ -51,7 +53,9 @@ function Part2(input) {
         done++;
       } else if (ingredient.mightContain.size === 1) {
         ingredient.contains = [...ingredient.mightContain.values()].pop();
-        allIngredients.forEach((x) => x.mightContain.delete(ingredient.contains));
+        allIngredients.forEach((x) =>
+          x.mightContain.delete(ingredient.contains)
+        );
       }
     });
   }
@@ -59,7 +63,7 @@ function Part2(input) {
     .sort((a, b) => a.contains.localeCompare(b.contains))
     .map((x) => x.name)
     .join(',');
-};
+}
 
 console.time('Part 1');
 console.log(`Part 1: ${Part1(file)}`); // 2302

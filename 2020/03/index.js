@@ -20,7 +20,7 @@ function traverse(data, moveX, moveY) {
     if (data[iY][iX] == '#') treeCount++;
   }
   return treeCount;
-};
+}
 
 console.log(`Part 1: ${traverse(datagrid, 3, 1)}`); // 187
 

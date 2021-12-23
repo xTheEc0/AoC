@@ -18,19 +18,22 @@ function Part1(input) {
     { 1: 0, 3: 1 }
   );
   return jolts['1'] * jolts['3'];
-};
+}
 
 function Part2(input) {
   return input
     .reduce(
       (computed, jolt) => {
-        computed[jolt] = (computed[jolt - 3] || 0) + (computed[jolt - 2] || 0) + (computed[jolt - 1] || 0);
+        computed[jolt] =
+          (computed[jolt - 3] || 0) +
+          (computed[jolt - 2] || 0) +
+          (computed[jolt - 1] || 0);
         return computed;
       },
       [1]
     )
     .pop();
-};
+}
 
 console.log(`Part 1: ${Part1(file)}`); // 1984
 console.log(`Part 2: ${Part2(file)}`); // 3543369523456

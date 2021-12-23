@@ -15,19 +15,21 @@ function parse(rules) {
   }
   pattern = pattern.replace(/\("([^"]*)"\)/g, '$1').replace(/[\s"]/g, '');
   return new RegExp(`^${pattern}$`);
-};
+}
 
 function Part1(input) {
   const [rules, messages] = input.split('\r\n\r\n').map((x) => x.split('\r\n'));
   const pattern = parse(rules);
   return messages.filter((message) => message.match(pattern)).length;
-};
+}
 
 function Part2(input) {
   const rule = new Array(10).fill().map((x, i) => `42{${i + 1}} 31{${i + 1}}`);
-  input = input.replace(/^8: 42$/m, '8: 42+').replace(/^11: 42 31$/m, `11: ${rule.join('|')}`);
+  input = input
+    .replace(/^8: 42$/m, '8: 42+')
+    .replace(/^11: 42 31$/m, `11: ${rule.join('|')}`);
   return Part1(input);
-};
+}
 
 console.time('Part 1');
 console.log(`Part 1: ${Part1(file)}`); // 75592527415659

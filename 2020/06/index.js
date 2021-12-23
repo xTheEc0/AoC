@@ -12,7 +12,7 @@ function Part1(input) {
     sum += new Set([...el.replace(/[\r\n]{1,2}/g, '')]).size;
   });
   return sum;
-};
+}
 
 function Part2(input) {
   let sum = 0;
@@ -25,7 +25,7 @@ function Part2(input) {
     ).length;
   });
   return sum;
-};
+}
 
 console.log(`Part 1: ${Part1(file)}`); // 6726
 console.log(`Part 2: ${Part2(file)}`); // 3316

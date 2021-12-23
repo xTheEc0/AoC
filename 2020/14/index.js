@@ -13,7 +13,7 @@ function Part1(input) {
     const result = bitmask.map((bit, i) => (bit === 'X' ? bits[i] : bit));
 
     return parseInt(result.join(''), 2);
-  };
+  }
 
   for (const line of input) {
     if (/mask/.test(line)) {
@@ -26,7 +26,7 @@ function Part1(input) {
   }
 
   return [...memory.values()].reduce((a, b) => a + b, 0);
-};
+}
 
 function Part2(input) {
   const memory = new Map();
@@ -35,18 +35,27 @@ function Part2(input) {
 
   function mask(value) {
     const address = value.toString(2).padStart(36, '0').split('');
-    const result = bitmask.map((bit, i) => (bit === 'X' ? 'X' : bit === '0' ? address[i] : bit));
+    const result = bitmask.map((bit, i) =>
+      bit === 'X' ? 'X' : bit === '0' ? address[i] : bit
+    );
     const numberOfFloats = result.filter((bit) => bit === 'X').length;
 
-    const floats = Array.from({ length: Math.pow(2, numberOfFloats) }).map((_, i) => {
-      const combination = i.toString(2).padStart(numberOfFloats, '0').split('');
-      const float = result.map((bit) => (bit === 'X' ? combination.shift() : bit));
+    const floats = Array.from({ length: Math.pow(2, numberOfFloats) }).map(
+      (_, i) => {
+        const combination = i
+          .toString(2)
+          .padStart(numberOfFloats, '0')
+          .split('');
+        const float = result.map((bit) =>
+          bit === 'X' ? combination.shift() : bit
+        );
 
-      return parseInt(float.join(''), 2);
-    });
+        return parseInt(float.join(''), 2);
+      }
+    );
 
     return floats;
-  };
+  }
 
   for (const line of input) {
     if (/mask/.test(line)) {
@@ -60,7 +69,7 @@ function Part2(input) {
   }
 
   return [...memory.values()].reduce((a, b) => a + b, 0);
-};
+}
 
 //console.log(`Part 1: ${Part1(file)}`); // 2346881602152
 //console.log(`Part 2: ${Part2(file)}`); // 3885232834169

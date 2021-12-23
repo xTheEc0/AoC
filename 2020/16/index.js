@@ -7,7 +7,9 @@ function Part1(input) {
   const blocks = input.split(/[\r\n]{3,}/g);
 
   const fields = blocks[0].split('\r\n').map((field) => {
-    const [, r1min, r1max, r2min, r2max] = /: (\d+)-(\d+) or (\d+)-(\d+)/.exec(field);
+    const [, r1min, r1max, r2min, r2max] = /: (\d+)-(\d+) or (\d+)-(\d+)/.exec(
+      field
+    );
 
     return [parseInt(r1min), parseInt(r1max), parseInt(r2min), parseInt(r2max)];
   });
@@ -18,21 +20,34 @@ function Part1(input) {
     .map((line) => line.split(',').map(Number));
 
   return nearbyTickets.flat().reduce((errorRate, ticket) => {
-    if (!fields.some(([r1min, r1max, r2min, r2max]) => (ticket >= r1min && ticket <= r1max) || (ticket >= r2min && ticket <= r2max))) {
+    if (
+      !fields.some(
+        ([r1min, r1max, r2min, r2max]) =>
+          (ticket >= r1min && ticket <= r1max) ||
+          (ticket >= r2min && ticket <= r2max)
+      )
+    ) {
       errorRate += ticket;
     }
 
     return errorRate;
   }, 0);
-};
+}
 
 function Part2(input) {
   const blocks = input.split(/[\r\n]{3,}/g);
 
   let fields = blocks[0].split('\r\n').map((field) => {
-    const [, name, r1min, r1max, r2min, r2max] = /(.*): (\d+)-(\d+) or (\d+)-(\d+)/.exec(field);
+    const [, name, r1min, r1max, r2min, r2max] =
+      /(.*): (\d+)-(\d+) or (\d+)-(\d+)/.exec(field);
 
-    return [name.trim(), parseInt(r1min), parseInt(r1max), parseInt(r2min), parseInt(r2max)];
+    return [
+      name.trim(),
+      parseInt(r1min),
+      parseInt(r1max),
+      parseInt(r2min),
+      parseInt(r2max),
+    ];
   });
 
   const myTicket = blocks[1]
@@ -46,11 +61,18 @@ function Part2(input) {
     .map((line) => line.split(',').map(Number))
     .filter((ticket) => {
       return ticket.every((number) =>
-        fields.some(([, r1min, r1max, r2min, r2max]) => (number >= r1min && number <= r1max) || (number >= r2min && number <= r2max))
+        fields.some(
+          ([, r1min, r1max, r2min, r2max]) =>
+            (number >= r1min && number <= r1max) ||
+            (number >= r2min && number <= r2max)
+        )
       );
     });
 
-  const columns = Array.from({ length: myTicket.length }).map((_, i) => [i, nearbyTickets.map((numbers) => numbers[i])]);
+  const columns = Array.from({ length: myTicket.length }).map((_, i) => [
+    i,
+    nearbyTickets.map((numbers) => numbers[i]),
+  ]);
 
   let result = 1;
 
@@ -58,7 +80,11 @@ function Part2(input) {
     const [column, numbers] = columns.shift();
 
     const matches = fields.filter(([, r1min, r1max, r2min, r2max]) => {
-      return numbers.every((number) => (number >= r1min && number <= r1max) || (number >= r2min && number <= r2max));
+      return numbers.every(
+        (number) =>
+          (number >= r1min && number <= r1max) ||
+          (number >= r2min && number <= r2max)
+      );
     });
 
     if (matches.length === 1) {
@@ -73,7 +99,7 @@ function Part2(input) {
   }
 
   return result;
-};
+}
 
 console.log(`Part 1: ${Part1(file)}`); // 21978
 console.log(`Part 2: ${Part2(file)}`); // 1053686852011

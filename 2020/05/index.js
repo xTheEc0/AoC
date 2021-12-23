@@ -5,12 +5,12 @@ const file = fs.readFileSync('./input.txt', 'utf8').split('\r\n');
 
 function findSeatID(input) {
   return parseInt(input.replace(/[BR]/g, '1').replace(/[FL]/g, '0'), 2);
-};
+}
 
 function Part1(input) {
   const SeatIDs = input.map((x) => findSeatID(x));
   return Math.max(...SeatIDs);
-};
+}
 
 function Part2(input) {
   const SeatIDs = input.map((x) => findSeatID(x));
@@ -19,7 +19,7 @@ function Part2(input) {
   let sum = SeatIDs.reduce((acc, cur) => acc + cur);
 
   return ((input.length + 1) / 2) * (lowest + highest) - sum;
-};
+}
 
 console.log(`Part 1: ${Part1(file)}`); // 901
 console.log(`Part 2: ${Part2(file)}`); // 661

@@ -5,7 +5,11 @@ const file = fs.readFileSync('./input.txt', 'utf8');
 
 function findNthTerm(input, n) {
   numbers = input.split(',').map(Number);
-  const seen = new Map(numbers.flatMap((number, index) => (index < numbers.length - 1 ? [[number, index]] : [])));
+  const seen = new Map(
+    numbers.flatMap((number, index) =>
+      index < numbers.length - 1 ? [[number, index]] : []
+    )
+  );
 
   let last = numbers[numbers.length - 1];
 
@@ -16,15 +20,15 @@ function findNthTerm(input, n) {
   }
 
   return last;
-};
+}
 
 function Part1(input) {
   return findNthTerm(input, 2020);
-};
+}
 
 function Part2(input) {
   return findNthTerm(input, 30000000);
-};
+}
 
 console.time('Part 1');
 console.log(`Part 1: ${Part1(file)}`); // 447

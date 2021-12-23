@@ -4,44 +4,44 @@ import assert from 'assert';
 const file = fs.readFileSync('./input.txt', 'utf8');
 
 function Part1(input) {
-    let [x, y] = [0, 0];
-    const lines = input.split('\n').map(line => {
-        const [direction, value] = line.split(' ');
-        return { direction, value: +value };
-    });
-    for (const line of lines) {
-        if (line.direction === 'forward') {
-            x += line.value;
-        }
-        if (line.direction === 'down') {
-            y += line.value;
-        }
-        if (line.direction === 'up') {
-            y -= line.value;
-        }
+  let [x, y] = [0, 0];
+  const lines = input.split('\n').map((line) => {
+    const [direction, value] = line.split(' ');
+    return { direction, value: +value };
+  });
+  for (const line of lines) {
+    if (line.direction === 'forward') {
+      x += line.value;
     }
-    return x * y;
+    if (line.direction === 'down') {
+      y += line.value;
+    }
+    if (line.direction === 'up') {
+      y -= line.value;
+    }
+  }
+  return x * y;
 }
 
 function Part2(input) {
-    let [aim, x, y] = [0, 0, 0];
-    const lines = input.split('\n').map(line => {
-        const [direction, value] = line.split(' ');
-        return { direction, value: +value };
-    });
-    for (const line of lines) {
-        if (line.direction === 'forward') {
-            x += line.value;
-            y += line.value * aim;
-        }
-        if (line.direction === 'down') {
-            aim += line.value;
-        }
-        if (line.direction === 'up') {
-            aim -= line.value;
-        }
+  let [aim, x, y] = [0, 0, 0];
+  const lines = input.split('\n').map((line) => {
+    const [direction, value] = line.split(' ');
+    return { direction, value: +value };
+  });
+  for (const line of lines) {
+    if (line.direction === 'forward') {
+      x += line.value;
+      y += line.value * aim;
     }
-    return x * y;
+    if (line.direction === 'down') {
+      aim += line.value;
+    }
+    if (line.direction === 'up') {
+      aim -= line.value;
+    }
+  }
+  return x * y;
 }
 
 console.log(`Part 1: ${Part1(file)}`); // 1580000
@@ -53,7 +53,7 @@ down 5
 forward 8
 up 3
 down 8
-forward 2`
+forward 2`;
 
 console.log(`\n\n ~ TESTS ~ `);
 // Part 1 tests
